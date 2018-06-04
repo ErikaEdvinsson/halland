@@ -15,6 +15,14 @@ trait NavSite
 		if (!is_a($post, 'WP_Post')) {
 			return;
 		}
+
+		$args = array(
+			'output' => ARRAY_A
+		);
+
+		$menu = wp_get_nav_menu_items('Main menu', $args);
+		
+		var_dump($menu);
 	
 		// Get the highest ancestor of the current page
 		if (is_page() && !is_front_page() && !$post->post_parent) {
@@ -53,5 +61,23 @@ trait NavSite
 		}
 
 		return $pages;
+	}
+
+	/**
+	 * Update the key of an array while preserving the order of the array
+	 * https://stackoverflow.com/a/21299719
+	 * @return array
+	 */
+	private function changeKeys($arr, $oldKey, $newKey)
+	{
+    	if (!array_key_exists($oldKey, $arr)) {
+			return $arr;
+    	}
+
+		$keys = array_keys( $arr );
+		$keys[ array_search( $oldKey, $keys ) ] = $newKey;
+		
+		var_dump(array_combine( $keys, $arr ));
+		return array_combine( $keys, $arr );
 	}
 }
