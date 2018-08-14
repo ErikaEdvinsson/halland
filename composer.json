@@ -53,6 +53,7 @@
     "roots/sage-lib": "~9.0.0-beta.4",
     "soberwp/controller": "~9.0.0-beta.4",
     "helsingborg-stad/acf-export-manager": ">=1.0.0",
+    "wpackagist-plugin/advanced-custom-fields": "*",
     "advanced-custom-fields/advanced-custom-fields-pro": "*"
   },
   "require-dev": {
