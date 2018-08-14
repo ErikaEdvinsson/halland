@@ -7,6 +7,29 @@ use Roots\Sage\Assets\JsonManifest;
 use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
+define('HALLAND_PATH', get_theme_root() . '/halland/');
+define('HALLAND_URI', get_theme_root_uri() . '/halland/');
+
+/**
+ * Initialize ACF
+ */
+require_once ABSPATH . 'wp-admin/includes/plugin.php';
+
+if (file_exists(HALLAND_PATH . 'vendor/advanced-custom-fields-pro/acf.php') && !is_plugin_active('advanced-custom-fields-pro/acf.php')) {
+	
+	new \App\Acf();
+
+    if (!class_exists('acf')) {
+        require_once HALLAND_PATH . '/vendor/advanced-custom-fields-pro/acf.php';
+    }
+}
+
+/**
+ * ACF
+ */
+new \App\Acf\Import();
+new \App\Acf\DataCurator();
+
 /**
  * Theme
  */
@@ -15,12 +38,6 @@ new \App\Theme\Support();
 new \App\Theme\Navigation();
 new \App\Theme\Sidebars();
 new \App\Theme\ThemeOptions();
-
-/**
- * ACF
- */
-new \App\Acf\Import();
-new \App\Acf\DataCurator();
 
 /**
  * Updates the `$post` variable on each iteration of the loop.
