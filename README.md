@@ -53,20 +53,28 @@ themes/halland/           # → Root
 * [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Getting started
-
-1. Clone Halland into the themes directory of [your Wordpress installation](https://github.com/RegionHalland/wordpress-boilerplate) and install dependencies:
+1. Clone Halland into the themes directory of [your Wordpress installation](https://github.com/RegionHalland/wordpress-example) and install dependencies:
 ```sh
 $ cd <your site>/web/app/themes/
 $ git clone https://github.com/RegionHalland/halland.git
 $ cd halland
+```
+
+2. This theme requires ACF Pro. Rename `.env.example` to `.env` and add your key. If you don't have a key, ask someone involved in the project (.. or [buy one here](https://www.advancedcustomfields.com/pro/#pricing-table)):
+```sh
+$ mv .env.example .env
+```
+
+3. Install dependencies.
+```sh
 $ composer install && yarn
 ```
 
-2. Update `resources/assets/config.json` settings:
+4. Update `resources/assets/config.json` settings:
 - `devUrl` should reflect your local development hostname, for example `http://site.test`
 - `publicPath` should reflect your WordPress directory structure (`/web/app/themes/halland` or `/wp-content/themes/halland` for non-[Bedrock](https://roots.io/bedrock/) installs)
 
-3. Build commands
+5. Build commands
 * `yarn start` — Compile assets when file changes are made, start Browsersync session
 * `yarn build` — Compile and optimize the files in your assets directory
 * `yarn build:production` — Compile assets for production
@@ -105,6 +113,8 @@ $ sudo service nginx reload
 ## ACF Fields
 
 Halland uses [Advanced Custom Fields](https://www.advancedcustomfields.com/) to create custom fields and [ACF Export Manager](https://github.com/helsingborg-stad/acf-export-manager/) to save the field definitions as `.php` and `.json` files, so that we can keep them under version control.
+
+
 
 ### Importing
 
