@@ -26,32 +26,33 @@ trait NavSite
 			$top_page = array_values(array_slice($ancestors, -1))[0];
 		}
 		
-		// Create pages array
-		$pages = get_pages(array(
-			'parent' => 0
-		));
-
+		// Get main menu items and frontpage
+		$menuItems = wp_get_nav_menu_items('main-menu');
 		$frontpage = (int)get_option('page_on_front');
 
-		foreach ($pages as $i => $page) {
-			if ($page->ID === $frontpage) {
+		foreach ($menuItems as $i => $item) {
+			// Get the actual page ID that the menu item points to.
+			// https://wordpress.stackexchange.com/q/94787
+			$pageId = get_post_meta( $item->ID, '_menu_item_object_id', true );
+
+			if ($pageId === $frontpage) {
 				unset($pages[$i]);
 				continue;
 			}
 
-			if (isset($top_page) && $top_page === $page->ID) {
+			if (isset($top_page) && $top_page === $pageId) {
 				$page->active = true;
 			}
 
-			$page->children = get_pages(array( 
-				'child_of' => $page->ID, 
-				'parent' => $page->ID,
+			$item->children = get_pages(array( 
+				'child_of' => $pageId, 
+				'parent' => $pageId,
 				'hierarchical' => 0,
 				'sort_column' => 'menu_order', 
 				'sort_order' => 'asc'
 			));
 		}
 
-		return $pages;
+		return $menuItems;
 	}
 }

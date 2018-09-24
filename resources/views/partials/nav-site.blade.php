@@ -20,7 +20,7 @@
 			<ul class="site-nav__list">
 				@foreach($nav_site as $topLevelPage)
 				<li class="site-nav__item">
-					<a href="#" onclick="return false" class="site-nav__link {{ $topLevelPage->active ? 'active' : '' }}">{{ $topLevelPage->post_title }}</a>
+					<a href="#" onclick="return false" class="site-nav__link {{ $topLevelPage->active ? 'active' : '' }}">{{ $topLevelPage->title }}</a>
 				
 					@if(isset($topLevelPage->children))
 					<nav class="dropdown">
