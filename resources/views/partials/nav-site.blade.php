@@ -6,7 +6,7 @@
 				<img src="@asset('images/navigation_logo.svg')" alt="">
 			</a>
 			@if(isset($site_description))
-			<span class="site-nav__description">{{ $site_description }}</span>
+			<span class="site-nav__description">{{ $site_title }}</span>
 			@endif
 			<button class="site-nav__menu-btn">
 				<svg class="icon-badge icon-badge--md">

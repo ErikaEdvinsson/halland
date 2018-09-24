@@ -5,10 +5,10 @@ namespace App\Traits;
 trait Bloginfo
 {
 	/**
-	 * Return the sites name
+	 * Return the sites title
 	 * @return string
 	 */
-	public function siteName()
+	public function siteTitle()
 	{
 		return get_bloginfo('name');
 	}
