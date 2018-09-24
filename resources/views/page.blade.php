@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="px3 mt4">
-	<div class="container mx-auto mt3">
+	<div class="container mx-auto mt3 mb4">
 		<div class="clearfix mxn3 flex flex-wrap content-stretch">
 			<div class="col col-12 md-col-9 flex order-1 flex-wrap content-stretch">
 				<div class="col col-12 px3">
